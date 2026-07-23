@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills | Kevin Chege</title>
+<meta name="description" content="Kevin Chege — Digital marketer specializing in SEO, content strategy, email marketing, paid ads, and web design. Nakuru, Kenya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo">Kevin<span>.</span>Chege</a>
+    <div class="navlinks">
+      <a href="skills.html" class="active">Skills</a>
+      <a href="certification.html">Certifications</a>
+      <a href="project.html">Project</a>
+      <a href="services.html">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════ SKILLS ════════════════════ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="head">
+      <h2>Core competencies</h2>
+    </div>
+    <div class="cap-grid reveal">
+      <div class="cap">
+        <div class="icon orange">S</div>
+        <h3>SEO &amp; Content Strategy</h3>
+        <p>Keyword research, on-page optimization, blog writing, and content planning built to rank on search engines and convert readers into customers.</p>
+      </div>
+      <div class="cap">
+        <div class="icon blue">E</div>
+        <h3>Email Marketing</h3>
+        <p>End-to-end email funnel design — from welcome sequences and nurture campaigns to segmentation and performance analytics using Mailchimp.</p>
+      </div>
+      <div class="cap">
+        <div class="icon green">A</div>
+        <h3>Paid Advertising</h3>
+        <p>Google Ads and Meta Ads campaign management — audience targeting, budget optimization, A/B testing, and ROI tracking across paid channels.</p>
+      </div>
+      <div class="cap">
+        <div class="icon purple">W</div>
+        <h3>Web Design &amp; Branding</h3>
+        <p>WordPress development, landing page design, brand identity, and conversion-focused UI — from wireframe to live deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CTA BANNER ════════════════════ -->
+<section class="cta-banner" id="contact">
+  <div class="wrap reveal">
+    <h2>Let's grow your brand together.</h2>
+    <p>Whether you need SEO, email marketing, website, paid ads or a full digital strategy — I'm ready to help.</p>
+    <div class="cta cta-center">
+      <a href="Email:kevinc10189@gmail.com" class="btn btn-primary">Get in Touch ✉</a>
+      <a href="https://www.linkedin.com/in/kevin-chege1" target="_blank" rel="noopener" class="btn btn-ghost">Connect on LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SCROLL REVEAL SCRIPT ════════════════════ -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>
