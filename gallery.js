@@ -1,58 +1,72 @@
 /* ════════════════════════════════════════════
-   GALLERY — the only file you edit to add photos
-   1. Put your photos in the same folder as index.html
-   2. Add each file name to the list below
+   GALLERY — automatic. No list to edit.
+   Just upload photos next to index.html named in order:
+     gallery-1.png, gallery-2.png, gallery-3.png ...
+   Numbers must not skip (if gallery-4.png is missing,
+   gallery-5.png and later will not show).
    ════════════════════════════════════════════ */
-const GALLERY_IMAGES = [
-  // { src: "gallery-1.png", alt: "Describe photo 1" },
-  // { src: "gallery-2.png", alt: "Describe photo 2" },
-];
-
-const GALLERY_COLUMNS = 4; // maximum images per row
+const GALLERY_PREFIX = "gallery-";
+const GALLERY_EXT = ".png";        
+const GALLERY_COLUMNS = 4;         
+const GALLERY_MAX = 200;           
 
 (function () {
   const target = document.getElementById("gallery-rows");
+  const section = document.getElementById("gallery");
   if (!target) return;
 
-  // Hide the whole section until at least one photo is listed
-  const section = document.getElementById("gallery");
-  if (!GALLERY_IMAGES.length) {
-    if (section) section.style.display = "none";
-    return;
+  // Stay hidden until at least one photo is found
+  if (section) section.style.display = "none";
+
+  const found = [];
+
+  // Try gallery-1.png, gallery-2.png ... and stop at the first one that is missing
+  function loadNext(n) {
+    if (n > GALLERY_MAX) return render();
+
+    const img = new Image();
+    img.onload = function () {
+      found.push(img);
+      loadNext(n + 1);
+    };
+    img.onerror = render;
+    img.alt = "Gallery photo " + n;
+    img.src = GALLERY_PREFIX + n + GALLERY_EXT;
   }
 
-  // Split the list into rows of up to 4
-  for (let i = 0; i < GALLERY_IMAGES.length; i += GALLERY_COLUMNS) {
-    const chunk = GALLERY_IMAGES.slice(i, i + GALLERY_COLUMNS);
+  function render() {
+    if (!found.length) return; // nothing uploaded yet, section stays hidden
+    if (section) section.style.display = "";
 
-    const row = document.createElement("div");
-    row.className = "gallery-row reveal";
-    row.dataset.count = chunk.length;
+    // Split the photos into rows of up to 4
+    for (let i = 0; i < found.length; i += GALLERY_COLUMNS) {
+      const chunk = found.slice(i, i + GALLERY_COLUMNS);
 
-    chunk.forEach((img) => {
-      const item = document.createElement("div");
-      item.className = "gallery-item";
+      const row = document.createElement("div");
+      row.className = "gallery-row reveal";
+      row.dataset.count = chunk.length;
 
-      const el = document.createElement("img");
-      el.src = img.src;
-      el.alt = img.alt || "Gallery photo";
-      el.loading = "lazy";
-
-      item.appendChild(el);
-      row.appendChild(item);
-    });
-
-    target.appendChild(row);
-  }
-
-  // Reuse the page's scroll-reveal effect for the new rows
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
+      chunk.forEach((img) => {
+        const item = document.createElement("div");
+        item.className = "gallery-item";
+        item.appendChild(img);
+        row.appendChild(item);
       });
-    },
-    { threshold: 0.1 }
-  );
-  target.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      target.appendChild(row);
+    }
+
+    // Reuse the page's scroll-reveal effect for the new rows
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.1 }
+    );
+    target.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  }
+
+  loadNext(1);
 })();
