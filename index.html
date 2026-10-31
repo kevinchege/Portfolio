@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="gallery/gallery.css">
 </head>
 <body>
 
@@ -48,6 +49,17 @@
   </div>
 </section>
 
+<!-- ════════════════════ GALLERY (content lives in the gallery/ folder) ════════════════════ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <h2>My <span>Gallery</span></h2>
+      <p>A glimpse of my work, moments and projects.</p>
+    </div>
+    <div class="gallery-rows" id="gallery-rows"></div>
+  </div>
+</section>
+
 <!-- ════════════════════ CTA BANNER ════════════════════ -->
 <section class="cta-banner" id="contact">
   <div class="wrap reveal">
@@ -74,6 +86,9 @@
     reveals.forEach(el => observer.observe(el));
   });
 </script>
+
+<!-- Gallery script (builds the rows from gallery/gallery.js) -->
+<script src="gallery/gallery.js"></script>
 
 </body>
 </html>
