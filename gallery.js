@@ -1,8 +1,8 @@
 /* ════════════════════════════════════════════
-   GALLERY-gallery-1.png, gallery-2.png, gallery-3.png ...
+   GALLERY-gallery-1.jpg, gallery-2.jpg, gallery-3.jpg ...
    ════════════════════════════════════════════ */
 const GALLERY_PREFIX = "gallery-"; 
-const GALLERY_EXT = ".png";        
+const GALLERY_EXT = ".jpg";        
 const GALLERY_COLUMNS = 4;        
 const GALLERY_MAX = 200;           
 
