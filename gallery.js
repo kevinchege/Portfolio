@@ -4,8 +4,8 @@
    2. Add each file name to the list below
    ════════════════════════════════════════════ */
 const GALLERY_IMAGES = [
-  // { src: "gallery-1.jpg", alt: "Describe photo 1" },
-  // { src: "gallery-2.jpg", alt: "Describe photo 2" },
+  // { src: "gallery-1.png", alt: "Describe photo 1" },
+  // { src: "gallery-2.png", alt: "Describe photo 2" },
 ];
 
 const GALLERY_COLUMNS = 4; // maximum images per row
