@@ -60,7 +60,10 @@
   }
   .navlinks a:hover::after{width:100%;}
   @media(max-width:640px){
-    .navlinks{gap:14px;font-size:0.7rem;}
+    /* Phone: keep name and links on one row; text scales down with screen width so nothing overlaps */
+    nav .wrap{height:64px;padding:0 12px;gap:8px;flex-wrap:nowrap;}
+    .logo{font-size:clamp(0.8rem,3.8vw,1.2rem);white-space:nowrap;}
+    .navlinks{gap:2vw;font-size:clamp(0.45rem,2.3vw,0.7rem);white-space:nowrap;}
   }
 
   /* ─── HERO ─── */
@@ -123,4 +126,4 @@
   .reveal.visible{opacity:1;transform:translateY(0);}
 
   /* ─── INLINE STYLE EXTRACTIONS ─── */
-  .cta-center{justify-content:center;}
+  .cta-center{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
